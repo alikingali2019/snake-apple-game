@@ -17,11 +17,24 @@ let level = 1;
 let applesEaten = 0;
 let gameRunning = false;
 let gamePaused = false;
-let gameSpeed = 100;
+let gameSpeed = 200; // قللنا من 100 إلى 200 (أبطأ)
 let highScore = localStorage.getItem('snakeHighScore') || 0;
+
+// Detect if mobile
+const isMobile = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
 
 // Update high score display
 document.getElementById('highScore').textContent = highScore;
+
+// Show mobile controls on mobile
+if (isMobile()) {
+    const mobileControls = document.getElementById('mobileControls');
+    if (mobileControls) {
+        mobileControls.style.display = 'flex';
+    }
+}
 
 // Keyboard Controls
 document.addEventListener('keydown', (e) => {
@@ -43,6 +56,28 @@ document.addEventListener('keydown', (e) => {
             e.preventDefault();
             break;
     }
+});
+
+// Mobile Button Controls
+const upBtn = document.getElementById('upBtn');
+const downBtn = document.getElementById('downBtn');
+const leftBtn = document.getElementById('leftBtn');
+const rightBtn = document.getElementById('rightBtn');
+
+if (upBtn) upBtn.addEventListener('click', () => {
+    if(direction.y === 0) nextDirection = { x: 0, y: -1 };
+});
+
+if (downBtn) downBtn.addEventListener('click', () => {
+    if(direction.y === 0) nextDirection = { x: 0, y: 1 };
+});
+
+if (leftBtn) leftBtn.addEventListener('click', () => {
+    if(direction.x === 0) nextDirection = { x: -1, y: 0 };
+});
+
+if (rightBtn) rightBtn.addEventListener('click', () => {
+    if(direction.x === 0) nextDirection = { x: 1, y: 0 };
 });
 
 // Button Controls
@@ -77,7 +112,7 @@ function resetGame() {
     score = 0;
     level = 1;
     applesEaten = 0;
-    gameSpeed = 100;
+    gameSpeed = 200; // إعادة تعيين السرعة
     gameRunning = false;
     gamePaused = false;
     
@@ -128,10 +163,10 @@ function update() {
         applesEaten++;
         document.getElementById('score').textContent = score;
         
-        // Level up every 5 apples
+        // Level up every 5 apples - تقليل السرعة (أبطأ)
         if (applesEaten % 5 === 0) {
             level++;
-            gameSpeed = Math.max(50, gameSpeed - 10);
+            gameSpeed = Math.max(120, gameSpeed - 15); // أبطأ من قبل (120 بدل 50)
             document.getElementById('level').textContent = level;
         }
         
