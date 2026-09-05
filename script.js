@@ -58,7 +58,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Mobile Button Controls - بدون معكوس
+// Mobile Button Controls - معكوس حسب لغة العربية
 const upBtn = document.getElementById('upBtn');
 const downBtn = document.getElementById('downBtn');
 const leftBtn = document.getElementById('leftBtn');
@@ -72,12 +72,13 @@ if (downBtn) downBtn.addEventListener('click', () => {
     if(direction.y === 0) nextDirection = { x: 0, y: 1 };
 });
 
+// اليمين يروح يميناً واليسار يروح يساراً - معكوس
 if (leftBtn) leftBtn.addEventListener('click', () => {
-    if(direction.x === 0) nextDirection = { x: -1, y: 0 };
+    if(direction.x === 0) nextDirection = { x: 1, y: 0 };
 });
 
 if (rightBtn) rightBtn.addEventListener('click', () => {
-    if(direction.x === 0) nextDirection = { x: 1, y: 0 };
+    if(direction.x === 0) nextDirection = { x: -1, y: 0 };
 });
 
 // Button Controls
