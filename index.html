@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة الدودة والتفاح</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐛 لعبة الدودة والتفاح 🍎</h1>
+            <div class="info">
+                <div class="score">النقاط: <span id="score">0</span></div>
+                <div class="level">المرحلة: <span id="level">1</span></div>
+                <div class="high-score">أعلى نقاط: <span id="highScore">0</span></div>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="btn btn-primary">ابدأ اللعبة</button>
+            <button id="pauseBtn" class="btn btn-secondary">إيقاف مؤقت</button>
+            <button id="resetBtn" class="btn btn-danger">إعادة تعيين</button>
+        </div>
+
+        <div class="instructions">
+            <h3>التعليمات:</h3>
+            <ul>
+                <li>استخدم أسهم لوحة المفاتيح للتحكم بالدودة</li>
+                <li>اجمع التفاح لتكبر الدودة وتزيد نقاطك</li>
+                <li>لا تصدم بالجدران أو نفسك!</li>
+                <li>كل 5 تفاحات تنتقل لمرحلة أصعب وأسرع</li>
+                <li>كل مرحلة أسرع من اللي قبلها</li>
+            </ul>
+        </div>
+
+        <div class="game-over" id="gameOverScreen" style="display: none;">
+            <div class="game-over-content">
+                <h2>انتهت اللعبة! 💔</h2>
+                <p>النقاط النهائية: <span id="finalScore">0</span></p>
+                <p>المرحلة: <span id="finalLevel">1</span></p>
+                <button onclick="location.reload()" class="btn btn-primary">لعب مجددا</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
