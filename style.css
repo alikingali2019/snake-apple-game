@@ -11,7 +11,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    direction: rtl;
+    direction: ltr;
 }
 
 .container {
@@ -188,14 +188,6 @@ body {
     grid-row: 2;
 }
 
-.dpad-middle {
-    grid-column: 1 / 4;
-    grid-row: 2;
-    display: flex;
-    gap: 5px;
-    justify-content: space-around;
-}
-
 .instructions {
     background: #f0f7ff;
     padding: 20px;
@@ -223,7 +215,7 @@ body {
     content: "✓ ";
     color: #48bb78;
     font-weight: bold;
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .game-over {

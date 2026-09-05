@@ -17,7 +17,7 @@ let level = 1;
 let applesEaten = 0;
 let gameRunning = false;
 let gamePaused = false;
-let gameSpeed = 200; // قللنا من 100 إلى 200 (أبطأ)
+let gameSpeed = 300; // سرعة بطيئة جداً للجوال
 let highScore = localStorage.getItem('snakeHighScore') || 0;
 
 // Detect if mobile
@@ -58,7 +58,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Mobile Button Controls
+// Mobile Button Controls - بدون معكوس
 const upBtn = document.getElementById('upBtn');
 const downBtn = document.getElementById('downBtn');
 const leftBtn = document.getElementById('leftBtn');
@@ -112,7 +112,7 @@ function resetGame() {
     score = 0;
     level = 1;
     applesEaten = 0;
-    gameSpeed = 200; // إعادة تعيين السرعة
+    gameSpeed = 300; // إعادة تعيين السرعة
     gameRunning = false;
     gamePaused = false;
     
@@ -166,7 +166,7 @@ function update() {
         // Level up every 5 apples - تقليل السرعة (أبطأ)
         if (applesEaten % 5 === 0) {
             level++;
-            gameSpeed = Math.max(120, gameSpeed - 15); // أبطأ من قبل (120 بدل 50)
+            gameSpeed = Math.max(150, gameSpeed - 20);
             document.getElementById('level').textContent = level;
         }
         
