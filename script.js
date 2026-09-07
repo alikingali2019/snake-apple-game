@@ -58,7 +58,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Mobile Button Controls - معكوس حسب لغة العربية
+// Mobile Button Controls
 const upBtn = document.getElementById('upBtn');
 const downBtn = document.getElementById('downBtn');
 const leftBtn = document.getElementById('leftBtn');
@@ -72,13 +72,13 @@ if (downBtn) downBtn.addEventListener('click', () => {
     if(direction.y === 0) nextDirection = { x: 0, y: 1 };
 });
 
-// اليمين يروح يميناً واليسار يروح يساراً - معكوس
+// تم تصحيح الاتجاهات لتتحرك الدودة حسب اتجاه الزر الحقيقي
 if (leftBtn) leftBtn.addEventListener('click', () => {
-    if(direction.x === 0) nextDirection = { x: 1, y: 0 };
+    if(direction.x === 0) nextDirection = { x: -1, y: 0 }; // يسار
 });
 
 if (rightBtn) rightBtn.addEventListener('click', () => {
-    if(direction.x === 0) nextDirection = { x: -1, y: 0 };
+    if(direction.x === 0) nextDirection = { x: 1, y: 0 }; // يمين
 });
 
 // Button Controls
@@ -113,7 +113,7 @@ function resetGame() {
     score = 0;
     level = 1;
     applesEaten = 0;
-    gameSpeed = 300; // إعادة تعيين السرعة
+    gameSpeed = 300;
     gameRunning = false;
     gamePaused = false;
     
@@ -164,7 +164,7 @@ function update() {
         applesEaten++;
         document.getElementById('score').textContent = score;
         
-        // Level up every 5 apples - تقليل السرعة (أبطأ)
+        // Level up every 5 apples
         if (applesEaten % 5 === 0) {
             level++;
             gameSpeed = Math.max(150, gameSpeed - 20);
